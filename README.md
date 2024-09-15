@@ -14,9 +14,11 @@ INERTIA: Es un plugin o libreria de laravel que nos permite crear single page ap
 Laravel Breeze: Este es un paquete o herramienta de laravel que nos brinda ya un servicio de autenticación y registro. Nos permite  indicar si queremos trabajar con blade, asi como con react,vue y Nextjs para trabajar. Si señalamos en nuestro caso algún framework o librería JavaScript ,breeze por defecto nos configurara todo el proyecto y nos integrara las vistas con la tecnología elegida (reactj,vue,blade,etc).
 
 ----------------------- ### IMPORTANTE ---------------------------
-NOTA: si se trabaja con Laravel 10 actualizar vite ya que dara error al hacer build 
+
+NOTA: si se trabaja con Laravel 10 Ñ: 
 	1.archivo :package.json debajo de "private": true,
     	incluir : "type": "module",
+     
 O si es necesario actualizar vitejs:
     2.npm install vite@latest
 	3.npm run build
