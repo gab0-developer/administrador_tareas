@@ -8,6 +8,20 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About Laravel inertia + react
+INERTIA: Es un plugin o libreria de laravel que nos permite crear single page app(aplication) sin necesidad de construir una API, permitiendo trabajar con backend (routers,controllers,middleware).
+
+Laravel Breeze: Este es un paquete o herramienta de laravel que nos brinda ya un servicio de autenticación y registro. Nos permite  indicar si queremos trabajar con blade, asi como con react,vue y Nextjs para trabajar. Si señalamos en nuestro caso algún framework o librería JavaScript ,breeze por defecto nos configurara todo el proyecto y nos integrara las vistas con la tecnología elegida (reactj,vue,blade,etc).
+
+----------------------- ### IMPORTANTE ---------------------------
+NOTA: si se trabaja con Laravel 10 actualizar vite ya que dara error al hacer build 
+	1.archivo :package.json debajo de "private": true,
+    	incluir : "type": "module",
+O si es necesario actualizar vitejs:
+    2.npm install vite@latest
+	3.npm run build
+	4.npm run dev
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
