@@ -20,9 +20,12 @@ NOTA: si se trabaja con Laravel 10 Ñ:
     	incluir : "type": "module",
      
 O si es necesario actualizar vitejs:
-    2.npm install vite@latest
-	3.npm run build
-	4.npm run dev
+
+2.npm install vite@latest
+
+3.npm run build
+
+4.npm run dev
 
 ## About Laravel
 
