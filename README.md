@@ -1,4 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" width="200" alt="ReactJS Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -6,6 +7,25 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+
+## About Laravel inertia + react
+INERTIA: Es un plugin o libreria de laravel que nos permite crear single page app(aplication) sin necesidad de construir una API, permitiendo trabajar con backend (routers,controllers,middleware).
+
+Laravel Breeze: Este es un paquete o herramienta de laravel que nos brinda ya un servicio de autenticación y registro. Nos permite  indicar si queremos trabajar con blade, asi como con react,vue y Nextjs para trabajar. Si señalamos en nuestro caso algún framework o librería JavaScript ,breeze por defecto nos configurara todo el proyecto y nos integrara las vistas con la tecnología elegida (reactj,vue,blade,etc).
+
+----------------------- ### IMPORTANTE ---------------------------
+
+NOTA: si se trabaja con Laravel 10 Ñ: 
+	1.archivo :package.json debajo de "private": true,
+    	incluir : "type": "module",
+     
+O si es necesario actualizar vitejs:
+
+2.npm install vite@latest
+
+3.npm run build
+
+4.npm run dev
 
 ## About Laravel
 
@@ -64,3 +84,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Pasos para usar plantilla.
+
+1. Ejecutar "composer install" para bajar todas las dependencias y plugins que trae ya la plantilla.
+2. Crear archivo ".env" en la raiz del proyecto.
+3. Copiar el contenido del archivo ".env.example" y pegar en el archivo ".env" ya creado.
+4. instalar y ejecutar nodejs: "npm i"
+5. aplicar buil de las dependencias: "npm run build".
+
+## Nota:si se trabaja con Laravel 10 dara error al hacer build.
+1.archivo :package.json debajo de "private": true, incluir : "type": "module",
