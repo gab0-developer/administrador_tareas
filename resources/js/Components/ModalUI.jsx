@@ -6,11 +6,12 @@ import Modal from '@mui/material/Modal';
 
 
 const modalStyles = {
-    small: { width: '300px' },
-    medium: { width: '600px' },
-    large: { width: '900px' },
-    xlarge: { width: '1200px' },
+    small: { width: '30%' },   // 300px en una pantalla de 400px
+    medium: { width: '40%' },  // 600px en una pantalla de 1200px
+    large: { width: '50%' },    // 900px en una pantalla de 2400px
+    xlarge: { width: '75%' },   // 1200px en una pantalla de 4000px
 };
+
   
 const defaultStyle = {
     position: 'absolute',

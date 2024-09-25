@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tarea;
 use Illuminate\Http\Request;
 
 class TareaController extends Controller
@@ -36,6 +37,11 @@ class TareaController extends Controller
     public function show(string $id)
     {
         //
+        $tareasId = Tarea::where('identificador_id',$id)->get();
+        return response()->json([
+            'actividades' => $tareasId,
+            // 'countTareas' => $countTareas,
+        ]);
     }
 
     /**
@@ -44,6 +50,11 @@ class TareaController extends Controller
     public function edit(string $id)
     {
         //
+        $tareasId = Tarea::find($id);
+        return response()->json([
+            'actividades' => $tareasId,
+            // 'countTareas' => $countTareas,
+        ]);
     }
 
     /**
@@ -52,6 +63,23 @@ class TareaController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        // return $request;
+        $tarea = Tarea::find($id);
+        if($request->estatusTask == '2'){
+            $tarea->update([
+                'id' => $tarea->id,
+                'estatu_id' => $request->estatusTask
+            ]);
+            return redirect()->back()->with('success', 'tarea completada');
+        }else{
+            $tarea->update([
+                'id' => $tarea->id,
+                'tarea' => $request->tarea
+            ]);
+            return redirect()->back()->with('success', 'tarea actualizada exitosamente');
+        }
+        
+        
     }
 
     /**
@@ -60,5 +88,10 @@ class TareaController extends Controller
     public function destroy(string $id)
     {
         //
+        // return $id;
+        $tareasId = Tarea::find($id);
+        // return $tareasId;
+        $tareasId->delete();
+        return redirect()->back()->with('success', 'tareas eliminada exitosamente');
     }
 }

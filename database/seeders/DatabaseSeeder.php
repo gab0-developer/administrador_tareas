@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            IdentificadorSeeder::class,
+            // IdentificadorSeeder::class,
+            // EstatusSeeder::class,
         ]);
     }
 }

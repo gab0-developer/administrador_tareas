@@ -7,20 +7,20 @@ import InputError from '@/Components/InputError';
 
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
-function EditTask({onClose,DataTask,Actividades,openDialog,onCloseDialog}) {
+function EditIdentificador({onClose,DataTask}) {
+
     const { enqueueSnackbar } = useSnackbar();
     const { flash } = usePage().props;  // Accede a los mensajes de flash
 
     const inertiaTask={
-        tarea: DataTask.tarea,
-        estatusTask:'1'
+        titulo: DataTask.titulo,
     }
     const {data,setData,put,errors,reset} = useForm(inertiaTask)
 
     const SubmitUpdateTask = (e) => {
         e.preventDefault();
 
-        put(route('tarea.update',DataTask.id), {
+        put(route('identificador.update',DataTask.id), {
             // respuesta del redireccionamiento
             onSuccess: (page) => {
                 // Accede al mensaje desde page.props.flash.success
@@ -52,14 +52,14 @@ function EditTask({onClose,DataTask,Actividades,openDialog,onCloseDialog}) {
                         <TextField
                             fullWidth
                             type='text'
-                            name='tarea'
-                            id="tarea"
-                            label="Cambiar tarea"
-                            value={data.tarea}
-                            onChange={(e) => setData('tarea', e.target.value)}
+                            name='titulo'
+                            id="titulo"
+                            label="Cambiar Titulo"
+                            value={data.titulo.toUpperCase()}
+                            onChange={(e) => setData('titulo', e.target.value.toUpperCase())}
                             variant="outlined" 
                         />
-                        <InputError message={errors.tarea} className="mt-2" />
+                        <InputError message={errors.titulo} className="mt-2" />
                 </Grid>
             </Grid>
             <Box component='div' sx={{my:2,float:'right'}}>
@@ -76,4 +76,4 @@ function EditTask({onClose,DataTask,Actividades,openDialog,onCloseDialog}) {
   )
 }
 
-export default EditTask
+export default EditIdentificador

@@ -6,6 +6,7 @@ use App\Models\IdentificadorTask;
 use App\Models\Tarea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class IdentificadorTaskController extends Controller
@@ -48,6 +49,7 @@ class IdentificadorTaskController extends Controller
             Tarea::create([
                 'tarea' => $tarea['actividad'],
                 'identificador_id' => $identificador->id,
+                'estatu_id' => '1',
             ]);
         }
         return redirect()->back()->with('success', 'tareas registradas exitosamente');
@@ -70,10 +72,10 @@ class IdentificadorTaskController extends Controller
      */
     public function edit(string $id)
     {
-        //
-        $tareasId = Tarea::where('identificador_id',$id)->get();
+        $identificadorId = IdentificadorTask::find($id);
         return response()->json([
-            'actividades' => $tareasId,
+            'identificador' => $identificadorId,
+            // 'countTareas' => $countTareas,
         ]);
     }
 
@@ -83,6 +85,11 @@ class IdentificadorTaskController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $identificador= IdentificadorTask::find($id);
+        $identificador->update([
+            'titulo' => $request->titulo,
+        ]);
+        return redirect()->back()->with('success', 'Identificador de tareas modificado');
     }
 
     /**
@@ -91,5 +98,8 @@ class IdentificadorTaskController extends Controller
     public function destroy(string $id)
     {
         //
+        $identificador= IdentificadorTask::find($id);
+        $identificador->delete();
+        return redirect()->back()->with('success', 'Identificador de tareas eliminado permanentemente');
     }
 }

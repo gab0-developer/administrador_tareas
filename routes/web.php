@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IdentificadorTaskController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TareaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/identificador', IdentificadorTaskController::class)->names('identificador');
+    Route::resource('/tarea', TareaController::class)->names('tarea');
 });
 
 
