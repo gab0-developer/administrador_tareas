@@ -97,9 +97,14 @@ class IdentificadorTaskController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-        $identificador= IdentificadorTask::find($id);
-        $identificador->delete();
-        return redirect()->back()->with('success', 'Identificador de tareas eliminado permanentemente');
+        $identificador = IdentificadorTask::find($id);
+        if ($identificador) {
+            // Eliminar tareas relacionadas
+            $identificador->tareas()->delete();
+            $identificador->delete(); //luego eliminar identificador de tareas
+            return redirect()->back();
+        }
+        return redirect()->back();
+        // return redirect()->back()->with('success', 'Identificador de tareas eliminado permanentemente');
     }
 }

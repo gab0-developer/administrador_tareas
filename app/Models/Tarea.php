@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $created_at
  * 
  * @property Estatus $estatus
+ * @property IdentificadorTask $identificador_task
  *
  * @package App\Models
  */
@@ -41,5 +42,10 @@ class Tarea extends Model
 	public function estatus()
 	{
 		return $this->belongsTo(Estatus::class, 'estatu_id');
+	}
+
+	public function identificador_task()
+	{
+		return $this->belongsTo(IdentificadorTask::class, 'identificador_id');
 	}
 }

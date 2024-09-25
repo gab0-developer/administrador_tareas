@@ -15,7 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function ShowTask({openDialog,onCloseDialog,onClick,actividadesIndicadores}) {
+function ShowTask({openDialog,onCloseDialog,onClick,actividadesIndicadores,titleIdentificador}) {
     const { enqueueSnackbar } = useSnackbar();
     const [Actividades, setActividades] = useState(actividadesIndicadores);
     const [valueUpdate, setValueUpdate] = useState('');
@@ -172,7 +172,7 @@ function ShowTask({openDialog,onCloseDialog,onClick,actividadesIndicadores}) {
                 <Toolbar >
                     
                     <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                    Mis actividades
+                    {titleIdentificador}
                     </Typography>
                     <Button sx={{ mr: 2, flex: 1 }} variant='contained' color="primary" onClick={handleOpenProgress}>
                         <Typography variant="h6" component="div">

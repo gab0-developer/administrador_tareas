@@ -20,8 +20,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function index({auth,identificadores}) {
 
-  // const { data, setData, post, processing, errors, reset } = useForm(tareas);
+  const {data,setData,delete: deleteRequest,errors,reset} = useForm()
+
   const [actividadesIndicadores, setActividadesIndicadores] = useState([]);
+  const [titleIdentificador, setTitleIdentificador] = useState('');
   const [valueUpdate, setValueUpdate] = useState('');
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -87,13 +89,14 @@ function index({auth,identificadores}) {
     
   }
 
-  const ActividadesDeIdentificador = async (idTask) => {
+  const ActividadesDeIdentificador = async (idIdentificador,titleIdentificador) => {
     try {
-      const url = route('tarea.show',idTask)
+      const url = route('tarea.show',idIdentificador)
       const response = await axios.get(url);
       const resp_data = await response.data.actividades
       
       setActividadesIndicadores(resp_data)
+      setTitleIdentificador(titleIdentificador)
 
     } catch (error) {
       console.log(error)
@@ -127,8 +130,10 @@ function index({auth,identificadores}) {
               onCloseDialog={handleCloseDialog}
               onClick={handleCloseDialog}
               actividadesIndicadores={actividadesIndicadores}
+              titleIdentificador={titleIdentificador}
             />
           </Box>
+          {/* modal modificar titulo identificador */}
           <ModalUI 
               open={openEdit}
               close={handleCloseEdit}
@@ -154,7 +159,7 @@ function index({auth,identificadores}) {
                                 severity="success" color='warning'
                                 action={
                                   <>
-                                    <Button variant='outlined' color="warning" size="small" onClick={ () => ActividadesDeIdentificador(item.id)}>
+                                    <Button variant='outlined' color="warning" size="small" onClick={ () => ActividadesDeIdentificador(item.id,item.titulo)}>
                                       visualizar
                                     </Button>
                                     <Button variant='outlined' color="primary" size="small" onClick={ () => handleOpenEdit(item.id)}>
