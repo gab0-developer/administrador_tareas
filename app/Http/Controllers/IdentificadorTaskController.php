@@ -36,23 +36,39 @@ class IdentificadorTaskController extends Controller
     public function store(Request $request)
     {
         //
-        // return $request;
-        $userAuth = Auth::id();
-        $identificador = IdentificadorTask::create([
-            'titulo' => $request->titulo,
-            'user_id' => $userAuth,
-        ]);
-
-        $tareasUser = $request->tarea;
-        foreach ($tareasUser as $tarea) {
-            // $actividades[] = $tarea['actividad'];
-            Tarea::create([
-                'tarea' => $tarea['actividad'],
-                'identificador_id' => $identificador->id,
-                'estatu_id' => '1',
+        // return $request->identificadoriD;
+        // vacio indica que la tarea no tiene indicadores
+        if ($request->identificadoriD == 'vacio') {
+            # code...
+            $userAuth = Auth::id();
+            $identificador = IdentificadorTask::create([
+                'titulo' => $request->titulo,
+                'user_id' => $userAuth,
             ]);
+    
+            $tareasUser = $request->tarea;
+            foreach ($tareasUser as $tarea) {
+                // $actividades[] = $tarea['actividad'];
+                Tarea::create([
+                    'tarea' => $tarea['actividad'],
+                    'identificador_id' => $identificador->id,
+                    'estatu_id' => '1',
+                ]);
+            }
+            return redirect()->back()->with('success', 'tareas registradas exitosamente');
+        }else{
+    
+            $tareasUser = $request->tarea;
+            foreach ($tareasUser as $tarea) {
+                // $actividades[] = $tarea['actividad'];
+                Tarea::create([
+                    'tarea' => $tarea['actividad'],
+                    'identificador_id' => $request->identificadoriD,
+                    'estatu_id' => '1',
+                ]);
+            }
+            return redirect()->back()->with('success', 'tareas registradas exitosamente');
         }
-        return redirect()->back()->with('success', 'tareas registradas exitosamente');
         // $tareas = Tarea::create([
         //     'tarea' => $request->tarea,
         //     'identificador_id' => $identificador->id,

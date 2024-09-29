@@ -90,8 +90,12 @@ class TareaController extends Controller
         //
         // return $id;
         $tareasId = Tarea::find($id);
-        // return $tareasId;
-        $tareasId->delete();
-        return redirect()->back()->with('success', 'tareas eliminada exitosamente');
+        if ($tareasId) {
+            # code...
+            $tareasId->delete();
+            return redirect()->back()->with('success', 'tarea eliminada exitosamente');
+        }else{
+            return redirect()->back()->with('error', 'No se encontró la tarea');
+        }
     }
 }

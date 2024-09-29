@@ -7,7 +7,7 @@ import InputError from '@/Components/InputError';
 
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
-function EditTask({onClose,DataTask,Actividades,openDialog,onCloseDialog}) {
+function EditTask({onClose,DataTask,Actividades,setActividades}) {
     const { enqueueSnackbar } = useSnackbar();
     const { flash } = usePage().props;  // Accede a los mensajes de flash
 
@@ -30,8 +30,12 @@ function EditTask({onClose,DataTask,Actividades,openDialog,onCloseDialog}) {
                     // cerrar modal
                     onClose()
                     // onCloseDialog()
-                    // openDialog()
-
+                    // Actualiza el estado de Actividades
+                    setActividades(Actividades => // prevActividades es el listado de todos los valroes actuales antes de ser actualizados
+                        Actividades.map(item => // crear un nuevo array basado en prevActividades
+                            item.id === DataTask.id ? { ...item, tarea: data.tarea } : item
+                        )
+                    );
                 }
                 // Resetear el formulario
                 reset();
@@ -44,8 +48,12 @@ function EditTask({onClose,DataTask,Actividades,openDialog,onCloseDialog}) {
         
     };
 
+   
+
   return (
     <>
+
+
          <Box component='form' onSubmit={SubmitUpdateTask} encType="multipart/form-data">
             <Grid container spacing={2}>
                 <Grid size={{xs:12, md:12,sm:12}}>

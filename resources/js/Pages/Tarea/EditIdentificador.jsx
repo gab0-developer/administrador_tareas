@@ -7,7 +7,7 @@ import InputError from '@/Components/InputError';
 
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
-function EditIdentificador({onClose,DataTask}) {
+function EditIdentificador({onClose,DataTask,identificadoriD}) {
 
     const { enqueueSnackbar } = useSnackbar();
     const { flash } = usePage().props;  // Accede a los mensajes de flash

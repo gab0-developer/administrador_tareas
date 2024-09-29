@@ -94,7 +94,7 @@ function index({auth,identificadores}) {
       const url = route('tarea.show',idIdentificador)
       const response = await axios.get(url);
       const resp_data = await response.data.actividades
-      
+      console.log('resp_data: ',resp_data)
       setActividadesIndicadores(resp_data)
       setTitleIdentificador(titleIdentificador)
 
@@ -104,8 +104,9 @@ function index({auth,identificadores}) {
 
     handleOpenDialog()
   }
-  
+
   // 
+  const identificadorTaskID = [{identificador_id:0}]
   return (
     <>
       <SnackbarProvider maxSnack={1}>
@@ -120,7 +121,10 @@ function index({auth,identificadores}) {
               open={openRegister}
               close={handleCloseRegister}
               title='Registrar tareas'
-              body= {<RegisterTask onClose={handleCloseRegister}/>}
+              body= {<RegisterTask onClose={handleCloseRegister} 
+                DataTask={[{identificador_id:"vacio"}]}
+                actividadesIndicadores={actividadesIndicadores}
+              />}
               size='large'
           />
           {/* modal de show detalles de las tareas o actividades */}
@@ -128,9 +132,11 @@ function index({auth,identificadores}) {
             <ShowTask 
               openDialog={openDialog}
               onCloseDialog={handleCloseDialog}
+              onOpenDialog={handleOpenDialog}
               onClick={handleCloseDialog}
               actividadesIndicadores={actividadesIndicadores}
               titleIdentificador={titleIdentificador}
+              ModalRegisterTask={handleOpenRegister}
             />
           </Box>
           {/* modal modificar titulo identificador */}

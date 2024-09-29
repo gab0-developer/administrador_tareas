@@ -10,7 +10,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 import { useSnackbar } from 'notistack';
 
-function RegisterTask({onClose}) {
+function RegisterTask({onClose,DataTask,ActividadesTask,setActividades}) {
     
     const { enqueueSnackbar } = useSnackbar();
     const { flash } = usePage().props;  // Accede a los mensajes de flash
@@ -25,6 +25,8 @@ function RegisterTask({onClose}) {
     const tareas = {
         titulo:'',
         tarea:Inputsdomtask,
+        identificadoriD:DataTask[0].identificador_id,
+        
     };
     const { data, setData, post, processing, errors, reset } = useForm(tareas);
 
@@ -54,6 +56,7 @@ function RegisterTask({onClose}) {
             actividad:task
         }]);
         setTask('') //limpiar campo tarea
+        console.log('DataTask desde register: ',DataTask[0].identificador_id)
     }
     // ELEMINIAR INPUTS CREADOS 
     const Deletetask = (idtask) => {
@@ -74,6 +77,7 @@ function RegisterTask({onClose}) {
                     // cerrar modal
                     onClose()
                 }
+                // ! PENDIETNE POR TERMIAR QUE SE ACTUALICE EL ESTADO DE ACTIVIDADES CUANDO SE AGREGA NUEVAS TAREAS CORRESPONDIENTE AL IDENTIFICADOR
                 // Resetear el formulario
                 reset();
             },
@@ -88,17 +92,24 @@ function RegisterTask({onClose}) {
             <Box component='form' onSubmit={handleSubmit} >
                 <Grid container spacing={2} sx={{my:'1rem'}}>
                     <Grid size={{xs:12, md:12,sm:12}}>
-                            <TextField
-                                fullWidth
-                                type='text'
-                                name='titulo'
-                                id="titulo"
-                                label="Titulo de la tarea"
-                                value={data.titulo.toUpperCase()}
-                                onChange={(e) => setData('titulo', e.target.value.toUpperCase())}
-                                variant="filled" 
-                            />
-                            <InputError message={errors.titulo} className="mt-2" />
+                            { DataTask[0].identificador_id == "vacio" ? (
+                                <>
+                                    <TextField
+                                        fullWidth
+                                        type='text'
+                                        name='titulo'
+                                        id="titulo"
+                                        label="Titulo de la tarea"
+                                        value={data.titulo.toUpperCase()}
+                                        onChange={(e) => setData('titulo', e.target.value.toUpperCase())}
+                                        variant="filled" 
+                                    />
+                                    <InputError message={errors.titulo} className="mt-2" />
+                                </>
+                            ):(
+                                <input type="text" style={{display:'none'}} />
+                            )}
+                            
                     </Grid>
                 </Grid>
                 <Grid container spacing={2} >

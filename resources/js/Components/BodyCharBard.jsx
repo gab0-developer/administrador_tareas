@@ -20,7 +20,14 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+/*
+    TODO: IMPORTANTE 
+    --labeldata: es un array de texto obligatorio
+    --datas: es un array de numero (cantidad) obligatorio que corresponde a cada elemento del array de texto 
+    ejemplo : saber la cantidad de habitantes por estados. Tenemos un array de todos los estado definido en labeldata 
+    y su cantidad de habitantes definidos en el array data
 
+*/
 function BodyCharBard({titiledashboard,subtitledata,labeldata,datas,indexAxis}) {
   
 
@@ -63,7 +70,6 @@ function BodyCharBard({titiledashboard,subtitledata,labeldata,datas,indexAxis}) 
             }
         }
     };
-      
     let data = {
             labels: labeldata,
             datasets: [
