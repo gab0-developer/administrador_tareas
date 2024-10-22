@@ -62,7 +62,7 @@ export default function Login({ status, canResetPassword }) {
                 {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
                 <Box component='div' sx={{width:'70%',margin:'auto',display:'flex',alignItems:'center',justifyContent:'space-around',background:'#fff',position:'absolute',top:'10%',left:'15%',borderRadius:'10px',overflow:'hidden',boxShadow:'2px 2px 6px gray',position:'absolute'}}>
                     
-                    <Box component='div' sx={{width:'50%',height:'80vh',bgcolor:'#000'}}>
+                    <Box component='div' sx={{width:'70%',height:'80vh',bgcolor:'#000'}}>
                         <Box component='div' sx={{width:'100%',height:'100%'}}>
                             <img src={img.fondoLogin} alt="" style={{height:'100%'}} />
                         </Box>
