@@ -23,7 +23,7 @@ function RegisterTask({onClose,DataTask,ActividadesTask,setActividades}) {
     const [disabledAddTask, setDisabledAddTask] = useState(true); //desabilitar bton agregar tarea
 
     const tareas = {
-        titulo:'',
+        titulo:'IDENTIFICAR',
         tarea:Inputsdomtask,
         identificadoriD:DataTask[0].identificador_id,
         
@@ -84,6 +84,7 @@ function RegisterTask({onClose,DataTask,ActividadesTask,setActividades}) {
             onError: (errors) => {
                 // Si ocurre algún error
                 enqueueSnackbar('Ocurrió un error', { variant: 'error' });
+                console.log(errors)
             }
         });
     }
@@ -117,14 +118,14 @@ function RegisterTask({onClose,DataTask,ActividadesTask,setActividades}) {
                             <TextField
                                 fullWidth
                                 type='text'
-                                name='task'
-                                id="task"
+                                name='tarea'
+                                id="tarea"
                                 label="ingresar tarea"
                                 value={task}
                                 onChange={(e) => setTask(e.target.value)}
                                 variant="outlined" 
                             />
-                            <InputError message={errors.telefono} className="mt-2" />
+                            <InputError message={errors.tarea} className="mt-2" />
                     </Grid>
                     <Grid size={{xs:12, md:2,sm:2}}>
                         <Fab color="success" aria-label="add" onClick={addTareas} disabled={disabledAddTask}>

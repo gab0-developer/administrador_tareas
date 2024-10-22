@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IdentificadorTaskRequest;
 use App\Models\IdentificadorTask;
 use App\Models\Tarea;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class IdentificadorTaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(IdentificadorTaskRequest $request)
     {
         //
         // return $request->identificadoriD;

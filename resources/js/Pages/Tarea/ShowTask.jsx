@@ -232,7 +232,7 @@ function ShowTask({openDialog,onCloseDialog,onOpenDialog,onClick,actividadesIndi
                 
                 <Box component='div' sx={{my:2}}>
                     <Button variant="contained" color="warning" onClick={handleOpenRegister}>
-                        Nueva tarea
+                        Agregar tarea
                     </Button>
                 </Box>
 

@@ -11,7 +11,7 @@ class IdentificadorTaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,9 @@ class IdentificadorTaskRequest extends FormRequest
     {
         return [
             //
-            
+            'titulo' => ['required', 'string'],
+            // 'tarea' => ['required', 'string', 'min:3'],
+            // 'actividad' => ['min:3'],
         ];
     }
 }

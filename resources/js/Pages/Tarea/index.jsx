@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, useForm } from '@inertiajs/react';
-import { Container, Box, Button, Stack, Alert, Typography, Dialog, AppBar, Toolbar, IconButton, Slide, List, ListItemButton, Divider, ListItemText } from '@mui/material';
+import { Container, Box, Button, Stack, Alert, Typography, Dialog, AppBar, Toolbar, IconButton, Slide, List, ListItemButton, Divider, ListItemText, Tooltip, Zoom } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
 import ModalUI from '@/Components/ModalUI';
@@ -13,6 +13,10 @@ import axios from 'axios';
 import ShowTask from './ShowTask';
 import Swal from 'sweetalert2';
 import EditIdentificador from './EditIdentificador';
+
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -136,7 +140,7 @@ function index({auth,identificadores}) {
               onClick={handleCloseDialog}
               actividadesIndicadores={actividadesIndicadores}
               titleIdentificador={titleIdentificador}
-              ModalRegisterTask={handleOpenRegister}
+              // ModalRegisterTask={handleOpenRegister}
             />
           </Box>
           {/* modal modificar titulo identificador */}
@@ -165,15 +169,21 @@ function index({auth,identificadores}) {
                                 severity="success" color='warning'
                                 action={
                                   <>
-                                    <Button variant='outlined' color="warning" size="small" onClick={ () => ActividadesDeIdentificador(item.id,item.titulo)}>
-                                      visualizar
-                                    </Button>
-                                    <Button variant='outlined' color="primary" size="small" onClick={ () => handleOpenEdit(item.id)}>
-                                      Editar
-                                    </Button>
-                                    <Button variant='outlined' color="error" size="small" onClick={ () => handleDeleteIdentificador(item.id)}>
-                                      Eliminar
-                                    </Button>
+                                    <Tooltip title="Ver" arrow TransitionComponent={Zoom}>
+                                      <IconButton aria-label="show" color="warning" size="small" onClick={ () => ActividadesDeIdentificador(item.id,item.titulo)}>
+                                        <VisibilityOutlinedIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Editar" arrow TransitionComponent={Zoom}>
+                                      <IconButton aria-label="update" color="primary" size="small" onClick={ () => handleOpenEdit(item.id)}>
+                                        <EditOutlinedIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Borrar" arrow TransitionComponent={Zoom}>
+                                      <IconButton aria-label="delete" color="error" size="small" onClick={ () => handleDeleteIdentificador(item.id)}>
+                                        <DeleteOutlinedIcon />
+                                      </IconButton>
+                                    </Tooltip>
                                   </>
                                 }
                               >
