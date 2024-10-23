@@ -63,23 +63,8 @@ function ShowTask({openDialog,onCloseDialog,onOpenDialog,onClick,actividadesIndi
     };
     const handleCloseEdit = () => setOpenEdit(false);
 
-
     let pendientesCount = 0;
     let completadasCount = 0;
-    // cantidad de registros
-    const tareaEstatus = () =>{
-        Actividades.forEach((item) => {
-            if (item.estatu_id == '1') {
-                pendientesCount++;
-            } else {
-                completadasCount++;
-            }
-        });
-        setTareasPendiente(pendientesCount)
-        setTareasCompletada(completadasCount)
-        
-    }
-    
     const handleDelete = (idTask) =>{
         // post(route('tarea.store'))
         console.log('idTask delete',idTask)
@@ -115,17 +100,14 @@ function ShowTask({openDialog,onCloseDialog,onOpenDialog,onClick,actividadesIndi
                 if (successMessage) {
                     enqueueSnackbar(successMessage, { variant: 'success' });
                 }
-                // setActividades(actividadesIndicadores)
-                // Actualiza el estado después de la eliminación
-                // setActividades(prevActividades => // prevActividades es el listado de todos los valores actuales antes de ser actualizados
-                //     prevActividades.map(item => // crear un nuevo array basado en prevActividades
-                //         item.id === idTarea ? { ...item, estatusTask:2 } : item
-                //     ) 
-                // );
-                // !PRENDIENTE POR TERMINAR 
-                console.log('consola:',actividadesIndicadores => actividadesIndicadores.map((item) => 
-                        item.identificador_id === identificador_id ? { ...item} : item))
-                // setActividades(actividadesIndicadores => actividadesIndicadores.map((item) => item.identificador_id === identificador_id));
+                // Actualiza el estado "Actividades"
+                setActividades(prevActividades =>
+                    prevActividades.map(item =>
+                        item.id === idTarea
+                            ? { ...item, estatu_id: '2' }  // Actualiza el estatus a "2" (completado)
+                            : item
+                    )
+                );
             },
             onError: (errors) => {
                 // Si ocurre algún error
@@ -195,7 +177,7 @@ function ShowTask({openDialog,onCloseDialog,onOpenDialog,onClick,actividadesIndi
             body= {<RegisterTask 
                 onClose={handleCloseRegister} 
                 DataTask={actividadesIndicadores}
-                ActividadesTask={Actividades}
+                Actividades={Actividades}
                 setActividades={setActividades}
             />}
             size='large'
@@ -321,12 +303,6 @@ function ShowTask({openDialog,onCloseDialog,onOpenDialog,onClick,actividadesIndi
                         <ChartTask 
                             datas={Actividades}
                         />
-                        {/* <BodyCharBard
-                            titiledashboard='TOTAL TAREAS PENDIENTES'
-                            subtitledata='Cantidad:'
-                            labeldata='TAREAS PENDIENTES'
-                            datas={['developer1', 'developer2', 'developer3','developer3','developer3','developer3','developer3','developer3','developer3','developer3','developer3','developer3','developer3','developer3','developer3','developer3','developer3']} 
-                        /> */}
                     </Box>
                 </Collapse>
                 

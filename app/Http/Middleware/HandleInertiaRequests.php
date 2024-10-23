@@ -34,9 +34,10 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            // para poder manejar los mensaje de retorno del controlador con useForm de inertia reactjs
+            // para poder manejar los mensaje y datos de retorno del controlador con useForm de inertia reactjs que trae por defecto
             'flash' => [
                 'success' => $request->session()->get('success'),
+                'data' => $request->session()->get('data'), // añadido para poder obtener los datos desde useForm de inertia reactjs
             ],
         ];
     }

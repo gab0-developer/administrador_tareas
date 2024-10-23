@@ -10,7 +10,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 import { useSnackbar } from 'notistack';
 
-function RegisterTask({onClose,DataTask,ActividadesTask,setActividades}) {
+function RegisterTask({onClose,DataTask,Actividades,setActividades}) {
     
     const { enqueueSnackbar } = useSnackbar();
     const { flash } = usePage().props;  // Accede a los mensajes de flash
@@ -72,12 +72,22 @@ function RegisterTask({onClose,DataTask,ActividadesTask,setActividades}) {
             onSuccess: (page) => {
                 // Accede al mensaje desde page.props.flash.success
                 const successMessage = page.props.flash?.success;
+                const nuevasTareas = page.props.flash?.data || []; // Valor por defecto
+
                 if (successMessage) {
                     enqueueSnackbar(successMessage, { variant: 'success' });
+                    // Actualiza el estado de Actividades si hay nuevas tareas
+                    if (nuevasTareas.length > 0) {
+                        setActividades((prevActividades) => [
+                            ...prevActividades,
+                            ...nuevasTareas,
+                        ]);
+                    }
                     // cerrar modal
                     onClose()
                 }
                 // ! PENDIETNE POR TERMIAR QUE SE ACTUALICE EL ESTADO DE ACTIVIDADES CUANDO SE AGREGA NUEVAS TAREAS CORRESPONDIENTE AL IDENTIFICADOR
+                // setActividades(Actividades)
                 // Resetear el formulario
                 reset();
             },

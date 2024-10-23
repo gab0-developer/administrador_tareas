@@ -60,20 +60,31 @@ class IdentificadorTaskController extends Controller
         }else{
     
             $tareasUser = $request->tarea;
+            $nuevasTareas = []; // Array para almacenar las nuevas tareas
+        
             foreach ($tareasUser as $tarea) {
-                // $actividades[] = $tarea['actividad'];
-                Tarea::create([
+                // Crea la tarea y almacena en el array
+                $nuevaTarea = Tarea::create([
                     'tarea' => $tarea['actividad'],
                     'identificador_id' => $request->identificadoriD,
                     'estatu_id' => '1',
                 ]);
+        
+                // Agrega la tarea recién creada al array
+                $nuevasTareas[] = [
+                    'id' => $nuevaTarea->id, // ID de la tarea
+                    'tarea' => $nuevaTarea->tarea,
+                    'estatu_id' => $nuevaTarea->estatu_id,
+                ];
             }
-            return redirect()->back()->with('success', 'tareas registradas exitosamente');
+            // Redirecciona con el mensaje de éxito y las nuevas tareas
+            return redirect()->back()->with([
+                'success' => 'Tareas registradas exitosamente', 
+                'data' => $nuevasTareas
+            ]);
+            
         }
-        // $tareas = Tarea::create([
-        //     'tarea' => $request->tarea,
-        //     'identificador_id' => $identificador->id,
-        // ]);
+        
     }
 
     /**
