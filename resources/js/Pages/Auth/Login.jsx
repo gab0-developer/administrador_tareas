@@ -114,33 +114,31 @@ export default function Login({ status, canResetPassword }) {
                             </div>
 
                             <div className="flex items-center justify-end mt-4">
-                                <Box component='div' sx={{display:'felx',alignItems:'center',justifyContent:'center'}}>
+                                <Box component='div' >
 
                                     <PrimaryButton className="ms-4" disabled={processing}>
-                                        Log in
+                                        Iniciar Sesion
                                     </PrimaryButton>
-                                    <Box component='div' >
-
-                                        {canResetPassword && (
-                                            <Link
-                                                href={route('password.request')}
-                                                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                            >
-                                                Olvidó su contraseña?
-                                            </Link>
-                                        )}
-
-                                        <Link
-                                            href={route('register')}
-                                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                        >
-                                            Registrarse
-                                        </Link>
-                                    </Box>
                                 </Box>
-
-                                
                             </div>
+                            <Box component='div' sx={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',mt:2}}>
+
+                                {canResetPassword && (
+                                    <Link
+                                        href={route('password.request')}
+                                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    >
+                                        Olvidó su contraseña?
+                                    </Link>
+                                )}
+
+                                <Link
+                                    href={route('register')}
+                                    className="underline text-sm text-orange-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-decoration:none"
+                                >
+                                    Registrarse
+                                </Link>
+                            </Box>
                         </form>
                     </Box>
                 </Box>
