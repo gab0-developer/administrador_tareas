@@ -69,7 +69,7 @@ export default function Login({ status, canResetPassword }) {
                     </Box>
                     <Box component='div' sx={{width:'50%',p:5}}>
                         <Box component='div' sx={{textAlign:'center',marginTop:'2rem'}}>
-                            <h6 className="text-3xl font-bold" style={{color:'#fd7d46',display:'flex',alignItems:'center',justifyContent:'center',position:'relative',top:'-6rem'}}><strong>Iniciar</strong> Sesión</h6>
+                            <h6 className="text-3xl font-bold" style={{color:'#fd7d46',display:'flex',alignItems:'center',justifyContent:'center',position:'relative',top:'-6rem'}}>Iniciar Sesión</h6>
                         </Box>
                         <form onSubmit={submit}>
                             <div>
