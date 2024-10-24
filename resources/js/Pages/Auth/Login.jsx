@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Checkbox from '@/Components/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
@@ -6,9 +6,10 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
-import { Box, TextField } from '@mui/material';
+import { Box, FormControl, FormHelperText, IconButton, InputAdornment, OutlinedInput, TextField } from '@mui/material';
 
 import img from '../../../img/image'
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const circle1 ={
     width: '100px',
@@ -35,7 +36,14 @@ export default function Login({ status, canResetPassword }) {
         password: '',
         remember: false,
     });
+    //  ocultar y mostrar password
+    const [showPassword, setShowPassword] = React.useState(false);
 
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
     useEffect(() => {
         return () => {
             reset('password');
@@ -89,17 +97,44 @@ export default function Login({ status, canResetPassword }) {
                             </div>
 
                             <div className="mt-4">
-                                <TextField
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    label="Contraseña"
-                                    value={data.password}
-                                    className="mt-1 block w-full"
-                                    autoComplete="current-password"
-                                    onChange={(e) => setData('password', e.target.value)}
-                                />
-                                <InputError message={errors.password} className="mt-2" />
+                                <FormControl fullWidth variant="outlined">
+                                    {errors.password ? (
+                                        
+                                        <InputLabel htmlFor="password" sx={{ color: 'red' }}>Contraseña </InputLabel>
+                                        ) : (
+                                        
+                                        <InputLabel htmlFor="password">Contraseña </InputLabel>
+                                    )
+                                        
+                                    }
+                                    <OutlinedInput
+                                        id="password"
+                                        name="password"
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={data.password}
+                                        className="mt-1 block w-full"
+                                        autoComplete="current-password"
+                                        onChange={(e) => setData('password', e.target.value)}
+                                        // focused={passSession.fucosed}
+                                        endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                            tabIndex="-1" // Omitir tabulación
+                                            >
+                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                        }
+                                        label="Contraseña"
+                                        error={errors.password}
+                                        />
+                                    <InputError message={errors.password} className="mt-2" />
+                                        
+                                </FormControl>
                             </div>
 
                             <div className="block mt-4">
