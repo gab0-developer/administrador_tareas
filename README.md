@@ -85,13 +85,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Pasos para usar plantilla.
+## Pasos para usar el sistema.
 
-1. Ejecutar "composer install" para bajar todas las dependencias y plugins que trae ya la plantilla.
+1. Ejecutar el siguiente comando para bajar todas las dependencias y plugins que trae la plantilla.
+   ```bash 
+   composer install
 2. Crear archivo ".env" en la raiz del proyecto.
 3. Copiar el contenido del archivo ".env.example" y pegar en el archivo ".env" ya creado.
-4. instalar y ejecutar nodejs: "npm i"
-5. aplicar buil de las dependencias: "npm run build".
+4. instalar y ejecutar node.js : 
+   ```bash 
+    npm install
+5. aplicar buil de las dependencias:
+   ```bash 
+   npm run build
 
 ## Nota:si se trabaja con Laravel 10 dara error al hacer build.
+Ir al siguiente archivo:
+
 1.archivo :package.json debajo de "private": true, incluir : "type": "module",
