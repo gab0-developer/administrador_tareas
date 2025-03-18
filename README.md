@@ -8,6 +8,21 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Tabla de contenido
+- [Tabla de contenido](#tabla-de-contenido)
+- [About Laravel inertia + react](#about-laravel-inertia--react)
+- [About Laravel](#about-laravel)
+- [Learning Laravel](#learning-laravel)
+- [Laravel Sponsors](#laravel-sponsors)
+	- [Premium Partners](#premium-partners)
+- [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct)
+- [Security Vulnerabilities](#security-vulnerabilities)
+- [License](#license)
+- [Pasos para usar el sistema.](#pasos-para-usar-el-sistema)
+- [Nota:si se trabaja con Laravel 10 dara error al hacer build.](#notasi-se-trabaja-con-laravel-10-dara-error-al-hacer-build)
+
+
 ## About Laravel inertia + react
 INERTIA: Es un plugin o libreria de laravel que nos permite crear single page app(aplication) sin necesidad de construir una API, permitiendo trabajar con backend (routers,controllers,middleware).
 
