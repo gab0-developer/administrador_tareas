@@ -86,7 +86,7 @@ export default function Login({ status, canResetPassword }) {
                                     id="email"
                                     type="email"
                                     name="email"
-                                    label="Titulo de la tarea"
+                                    label="Email"
                                     value={data.email}
                                     className="mt-1 block w-full"
                                     autoComplete="username"
