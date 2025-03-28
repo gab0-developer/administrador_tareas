@@ -45,7 +45,7 @@ export default function Register() {
                 <Box component='div' sx={{width:'50%',height:'auto', margin:'auto',position:'absolute',top:'20%',left:'25%'}}>
                     <Box component='div' sx={{width:'100%',height:'auto',p:'1rem',borderRadius:'10px',boxShadow:'2px 2px 6px gray',bgcolor:'#fff'}}>
                         <Box component='div' sx={{textAlign:'center',marginTop:'2rem'}}>
-                            <h6 className="text-3xl font-bold" style={{color:'#fd7d46',display:'flex',alignItems:'center',justifyContent:'center',position:'relative',top:'-1.5rem'}}><strong>Regístrate</strong> Ahora</h6>
+                            <h6 className="text-3xl font-bold" style={{color:'#fd7d46',display:'flex',alignItems:'center',justifyContent:'center',position:'relative',top:'-1.5rem'}}><strong>Registrate</strong></h6>
                         </Box>
                         <form onSubmit={submit}>
                             <div>
